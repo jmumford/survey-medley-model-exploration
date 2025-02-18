@@ -1,0 +1,41 @@
+onset	duration	movement_onset	coded_response	experiment_exp_id	item_coding	item_responses	item_text	possible_responses	response_time	survey	trial_type	worker_id	junk
+1.009	8.5	6.057	2.0	survey_medley	reverse	66,89,71,82,77	I have difficulty maintaining my focus on projects that take more than a few months to complete.	66,89,71,82,77	5.048	grit	Q06	s608	False
+12.322	8.5	15.932	3.0	survey_medley	reverse	66,89,71,82,77	New ideas and projects sometimes distract me from previous ones.	66,89,71,82,77	3.61	grit	Q01	s608	False
+21.936	8.5	25.323	4.0	survey_medley	reverse	66,89,71,82,77	I do certain things that are bad for me, if they are fun.	66,89,71,82,77	3.387	brief	Q13	s608	False
+31.142	8.5	35.27	4.0	survey_medley	forward	66,89,71,82,77	I am good at resisting temptation.	66,89,71,82,77	4.128	brief	Q09	s608	False
+40.688	8.5	43.446	4.0	survey_medley	reverse	66,89,71,82,77	I often act without thinking through all the alternatives.	66,89,71,82,77	2.758	brief	Q21	s608	False
+50.165	8.5	51.855	3.0	survey_medley	forward	66,89,71,82,77	I am a hard worker.	66,89,71,82,77	1.69	grit	Q04	s608	False
+59.372	8.5	62.174	5.0	survey_medley	forward	66,89,71,82,77	There is plenty of time left in my life to make new plans.	66,89,71,82,77	2.802	future_time	Q28	s608	False
+69.462	8.5	71.895	1.0	survey_medley	forward	66,89,71,82,77	I have the sense that time is running out.	66,89,71,82,77	2.433	future_time	Q29	s608	False
+80.37	8.5	83.658	3.0	survey_medley	reverse	66,89,71,82,77	I have a hard time breaking bad habits.	66,89,71,82,77	3.288	brief	Q10	s608	False
+90.26	8.5	94.232	1.0	survey_medley	forward	66,89	Do you sometimes like doing things that are a bit frightening?	66,89,71,82,77	3.972	impulsive_venture	Q39	s608	False
+99.398	8.5	101.329	3.0	survey_medley	forward	66,89,71,82,77	I finish whatever I begin.	66,89,71,82,77	1.931	grit	Q07	s608	False
+109.764	8.5	113.694	2.0	survey_medley	forward	66,89,71,82,77	Setbacks don't discourage me.	66,89,71,82,77	3.93	grit	Q02	s608	False
+119.448	8.5	122.361	2.0	survey_medley	forward	66,89,71,82,77	People would say that I have iron self-discipline.	66,89,71,82,77	2.913	brief	Q16	s608	False
+129.605	8.5	135.43	3.0	survey_medley	forward	66,89,71,82	When I am really excited, I tend not to think of the consequences of my actions.	66,89,71,82,77	5.825	upps	Q36	s608	False
+138.811	8.5	142.479	4.0	survey_medley	forward	66,89,71,82,77	I am able to work effectively toward long-term goals.	66,89,71,82,77	3.668	brief	Q19	s608	False
+149.99	8.5	154.775	3.0	survey_medley	reverse	66,89,71,82,77	Sometimes I can't stop myself from doing something, even if I know it is wrong.	66,89,71,82,77	4.785	brief	Q20	s608	False
+159.266	8.5	163.311	3.0	survey_medley	forward	66,89,71,82,77	As I get older, I begin to experience time as limited.	66,89,71,82,77	4.045	future_time	Q31	s608	False
+168.882	8.5	173.332	2.0	survey_medley	forward	66,89,71,82	Others would say I make bad choices when I am extremely happy about something.	66,89,71,82,77	4.45	upps	Q33	s608	False
+177.952	8.5	181.476	2.0	survey_medley	reverse	66,89,71,82,77	Pleasure and fun sometimes keep me from getting work done.	66,89,71,82,77	3.524	brief	Q17	s608	False
+186.955	8.5	188.573	3.0	survey_medley	forward	66,89,71,82,77	I am diligent.	66,89,71,82,77	1.618	grit	Q08	s608	False
+201.261	8.5	204.316	2.0	survey_medley	forward	66,89,71,82	I tend to act without thinking when I am really excited.	66,89,71,82,77	3.055	upps	Q37	s608	False
+210.33	8.5	212.788	5.0	survey_medley	reverse	66,89,71,82,77	I say inappropriate things.	66,89,71,82,77	2.458	brief	Q12	s608	False
+220.626	8.5	222.229	4.0	survey_medley	forward	66,89,71,82,77	My future is filled with possibilities.	66,89,71,82,77	1.603	future_time	Q24	s608	False
+232.415	8.5	234.694	2.0	survey_medley	reverse	66,89,71,82,77	I have trouble concentrating.	66,89,71,82,77	2.279	brief	Q18	s608	False
+241.621	8.5	245.169	2.0	survey_medley	forward	66,89	Do you welcome new and exciting experiences and sensations even if they are a little frightening and unconventional?	66,89,71,82,77	3.548	impulsive_venture	Q38	s608	False
+251.102	8.5	253.311	5.0	survey_medley	forward	66,89,71,82,77	I expect that I will set many new goals in the future.	66,89,71,82,77	2.209	future_time	Q23	s608	False
+261.06	8.5	263.062	1.0	survey_medley	forward	66,89,71,82,77	There are only limited possibilities in my future.	66,89,71,82,77	2.002	future_time	Q30	s608	False
+272.922	8.5	276.151	3.0	survey_medley	reverse	66,89,71,82,77	I have been obsessed with a certain idea or project for a short time but later lost interest.	66,89,71,82,77	3.229	grit	Q03	s608	False
+282.131	8.5	283.825	5.0	survey_medley	forward	66,89,71,82,77	I could do anything I want in the future.	66,89,71,82,77	1.694	future_time	Q27	s608	False
+293.649	8.5	298.049	1.0	survey_medley	forward	66,89,71,82	When overjoyed, I feel like I cant stop myself from going overboard.	66,89,71,82,77	4.4	upps	Q35	s608	False
+302.654	8.5	304.721	5.0	survey_medley	forward	66,89,71,82,77	Most of my life lies ahead of me.	66,89,71,82,77	2.067	future_time	Q25	s608	False
+311.794	8.5	315.043	2.0	survey_medley	reverse	66,89,71,82,77	I am lazy.	66,89,71,82,77	3.249	brief	Q11	s608	False
+321.41	8.5	325.08	4.0	survey_medley	forward	66,89,71,82,77	I refuse things that are bad for me.	66,89,71,82,77	3.67	brief	Q14	s608	False
+331.024	8.5	332.425	5.0	survey_medley	forward	66,89,71,82,77	Many opportunities await me in the future.	66,89,71,82,77	1.401	future_time	Q22	s608	False
+341.318	8.5	344.825	3.0	survey_medley	reverse	66,89,71,82,77	I often set a goal but later choose to pursue a different one.	66,89,71,82,77	3.507	grit	Q05	s608	False
+351.41	8.5	357.759	1.0	survey_medley	forward	66,89,71,82	When I get really happy about something, I tend to do things that can have bad consequences.	66,89,71,82,77	6.349	upps	Q34	s608	False
+360.482	8.5	363.087	4.0	survey_medley	forward	66,89,71,82,77	My future seems infinite to me.	66,89,71,82,77	2.605	future_time	Q26	s608	False
+370.642	8.5	374.189	1.0	survey_medley	forward	66,89,71,82	Sometimes when I feel bad, I can't seem to stop what I am doing even though it is making me feel worse.	66,89,71,82,77	3.547	upps	Q32	s608	False
+380.532	8.5	384.434	2.0	survey_medley	reverse	66,89,71,82,77	I wish I had more self-discipline.	66,89,71,82,77	3.902	brief	Q15	s608	False
+390.214	8.5	393.357	1.0	survey_medley	forward	66,89	Would you enjoy the sensation of skiing very fast down a high mountain slope?	66,89,71,82,77	3.143	impulsive_venture	Q40	s608	False
