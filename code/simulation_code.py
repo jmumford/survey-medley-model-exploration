@@ -48,8 +48,8 @@ def create_design_matrix(
     maxtime: float = None,
 ) -> pd.DataFrame:
     """
-    Create a design matrix for a given events DataFrame, which contains 'onset', 'trial_type'
-    and 'duration' columns.  A regressor is constructed for each `trial_type`
+    Create a design matrix for a given events DataFrame, which contains 'onset',
+    'trial_type' and 'duration' columns.  A regressor is constructed for each `trial_type`
 
     Parameters
     ----------
@@ -71,14 +71,14 @@ def create_design_matrix(
     add_deriv : bool, optional
         If True, includes derivative regressors in the design matrix, by default False.
     maxtime : float, optional
-        Maximum time for the design matrix, by default None. If None, it is set to the maximum
-        onset time plus 15 seconds.
+        Maximum time for the design matrix, by default None. If None, it is set
+        to the maximum onset time plus 15 seconds.
 
     Returns
     -------
     pd.DataFrame
-        A design matrix in the form of a DataFrame where each column corresponds to a regressor
-        and each row corresponds to a time point.
+        A design matrix in the form of a DataFrame where each column corresponds
+        to a regressor and each row corresponds to a time point.
     """
     conv_resolution = tr / oversampling
     if maxtime is None:
@@ -98,23 +98,15 @@ def create_design_matrix(
     desmtx_conv_microtime = pd.DataFrame()
 
     for trial_type in trial_types:
-        trial_type_onsets = events_df_long[events_df_long['trial_type'] == trial_type][
-            'onset'
-        ].values
-        trial_type_durations = events_df_long[
-            events_df_long['trial_type'] == trial_type
-        ]['duration'].values
-        sf_df = make_stick_function(
-            trial_type_onsets, trial_type_durations, maxtime, resolution=conv_resolution
-        )
+        trial_type_onsets = events_df_long[events_df_long['trial_type'] == trial_type]['onset'].values
+        trial_type_durations = events_df_long[events_df_long['trial_type'] == trial_type]['duration'].values
+        sf_df = make_stick_function(trial_type_onsets, trial_type_durations, maxtime, resolution=conv_resolution)
         desmtx_microtime[trial_type] = sf_df.sf.values
-        desmtx_conv_microtime[trial_type] = np.convolve(sf_df.sf.values, hrf_func)[
-            : sf_df.shape[0]
-        ]
+        desmtx_conv_microtime[trial_type] = np.convolve(sf_df.sf.values, hrf_func)[: sf_df.shape[0]]
         if add_deriv:
-            desmtx_conv_microtime[f'{trial_type}_derivative'] = np.convolve(
-                sf_df.sf.values, hrf_deriv_func
-            )[: sf_df.shape[0]]
+            desmtx_conv_microtime[f'{trial_type}_derivative'] = np.convolve(sf_df.sf.values, hrf_deriv_func)[
+                : sf_df.shape[0]
+            ]
     desmtx_conv_microtime.index = timepoints_conv
     desmtx_conv = desmtx_conv_microtime.loc[timepoints_data]
     desmtx_conv = desmtx_conv[sorted(desmtx_conv.columns)]
@@ -124,37 +116,33 @@ def create_design_matrix(
 
 def est_contrast_vifs(desmat, contrasts):
     """
-    IMPORTANT: This is only valid to use on design matrices where each regressor represents a condition vs baseline
-     or if a parametrically modulated regressor is used the modulator must have more than 2 levels.  If it is a 2 level modulation,
+    IMPORTANT: This is only valid to use on design matrices where each regressor
+     represents a condition vs baseline
+     or if a parametrically modulated regressor is used the modulator must have more
+     than 2 levels.  If it is a 2 level modulation,
      split the modulation into two regressors instead.
 
-    Calculates VIF for contrasts based on the ratio of the contrast variance estimate using the
-    true design to the variance estimate where between condition correaltions are set to 0
-    desmat : pandas DataFrame, design matrix
-    contrasts : dictionary of contrasts, key=contrast name,  using the desmat column names to express the contrasts
+    Calculates VIF for contrasts based on the ratio of the contrast variance estimate
+    using the true design to the variance estimate where between condition
+    correaltions are set to 0 desmat : pandas DataFrame, design matrix
+    contrasts : dictionary of contrasts, key=contrast name,  using the desmat
+    column names to express the contrasts
     returns: pandas DataFrame with VIFs for each contrast
     """
     desmat_copy = desmat.copy()
     # find location of constant regressor and remove those columns (not needed here)
-    desmat_copy = desmat_copy.loc[
-        :, (desmat_copy.nunique() > 1) | (desmat_copy.isnull().any())
-    ]
+    desmat_copy = desmat_copy.loc[:, (desmat_copy.nunique() > 1) | (desmat_copy.isnull().any())]
     # Scaling stabilizes the matrix inversion
     nsamp = desmat_copy.shape[0]
-    desmat_copy = (desmat_copy - desmat_copy.mean()) / (
-        (nsamp - 1) ** 0.5 * desmat_copy.std()
-    )
+    desmat_copy = (desmat_copy - desmat_copy.mean()) / ((nsamp - 1) ** 0.5 * desmat_copy.std())
     vifs_contrasts = {}
     for contrast_name, contrast_string in contrasts.items():
-        contrast_cvec = expression_to_contrast_vector(
-            contrast_string, desmat_copy.columns
-        )
+        contrast_cvec = expression_to_contrast_vector(contrast_string, desmat_copy.columns)
         true_var_contrast = (
-            contrast_cvec
-            @ np.linalg.inv(desmat_copy.transpose() @ desmat_copy)
-            @ contrast_cvec.transpose()
+            contrast_cvec @ np.linalg.inv(desmat_copy.transpose() @ desmat_copy) @ contrast_cvec.transpose()
         )
-        # The folllowing is the "best case" scenario because the between condition regressor correlations are set to 0
+        # The folllowing is the "best case" scenario because the between
+        # condition regressor correlations are set to 0
         best_var_contrast = (
             contrast_cvec
             @ np.linalg.inv(
@@ -171,23 +159,15 @@ def est_contrast_vifs(desmat, contrasts):
 
 def load_event_files(subnum):
     try:
-        events = pd.read_csv(
-            f'../data/event_files/s{subnum}_surveyMedley_events.tsv', sep='\t'
-        )
+        events = pd.read_csv(f'../data/event_files/s{subnum}_surveyMedley_events.tsv', sep='\t')
     except FileNotFoundError:
-        print(
-            f'Warning: surveyMedley_events.tsv is missing for subject {subnum} (subject omitted)'
-        )
+        print(f'Warning: surveyMedley_events.tsv is missing for subject {subnum} (subject omitted)')
         return None, None
 
     try:
-        orig_desmat = pd.read_csv(
-            f'../data/simplified_events_rt/sub-{subnum}_task-surveyMedley_design-matrix.csv'
-        )
+        orig_desmat = pd.read_csv(f'../data/simplified_events_rt/sub-{subnum}_task-surveyMedley_design-matrix.csv')
     except FileNotFoundError:
-        print(
-            f'Warning: design-matrix.csv is missing for subject {subnum} (subject omitted)'
-        )
+        print(f'Warning: design-matrix.csv is missing for subject {subnum} (subject omitted)')
         return None, None
 
     return events, orig_desmat
@@ -219,21 +199,15 @@ def make_desmat_sub(subnum: str, tr: float = 0.68) -> pd.DataFrame:
     events_inc_dur_rt = pd.concat([events, events_inc_dur_rt])
 
     maxtime = orig_desmat.shape[0] * tr
-    desmat = create_design_matrix(
-        events_inc_dur_rt, tr=0.68, maxtime=maxtime
-    ).reset_index(drop=True)
+    desmat = create_design_matrix(events_inc_dur_rt, tr=0.68, maxtime=maxtime).reset_index(drop=True)
     # if any columns are all 0s return None
     if (desmat == 0).all(axis=0).any():
-        print(
-            f'Warning: Subject {subnum} does not have a design matrix because one or more columns was all 0s'
-        )
+        print(f'Warning: Subject {subnum} does not have a design matrix because ' 'one or more columns was all 0s')
         return None
     # sometimes is 1 TR too long due to rounding
     desmat = desmat.iloc[: orig_desmat.shape[0]]
     # add the motion/first and cosine drift
-    nuisance_regs = orig_desmat.filter(
-        regex='^(trans|rot|cosine|num|response_time)', axis=1
-    ).reset_index(drop=True)
+    nuisance_regs = orig_desmat.filter(regex='^(trans|rot|cosine|num|response_time)', axis=1).reset_index(drop=True)
     return pd.concat([desmat, nuisance_regs], axis=1)
 
 
@@ -282,20 +256,14 @@ def make_desmat_sub_nilearn(subnum: str, tr: float = 0.68) -> pd.DataFrame:
             oversampling=5,
         ).reset_index(drop=True)
     if w:
-        print(
-            f'Error for subnum {subnum} \n from make_first_level_design_matrix: {w[-1].message}'
-        )
+        print(f'Error for subnum {subnum} \n from make_first_level_design_matrix: ' f'{w[-1].message}')
     # if any columns are all 0s return None
     if (desmat == 0).all(axis=0).any():
-        print(
-            f'Warning: Subject {subnum} does not have a design matrix because one or more columns was all 0s'
-        )
+        print(f'Warning: Subject {subnum} does not have a design matrix because ' 'one or more columns was all 0s')
         return None
     # sometimes is 1 TR too long due to rounding
     desmat = desmat.iloc[: orig_desmat.shape[0]]
     # add the motion/first and cosine drift
-    nuisance_regs = orig_desmat.filter(
-        regex='^(trans|rot|cosine|num|response_time)', axis=1
-    ).reset_index(drop=True)
+    nuisance_regs = orig_desmat.filter(regex='^(trans|rot|cosine|num|response_time)', axis=1).reset_index(drop=True)
 
     return pd.concat([desmat, nuisance_regs], axis=1)
